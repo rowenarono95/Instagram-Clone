@@ -14,4 +14,4 @@ class Profile(models.Model):
 
 
     def save_profile(self):
-        self.
+        self.save
