@@ -1,14 +1,35 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from django.shortcuts import render,redirect
+from django.http import HttpResponse, Http404,HttpResponseRedirect
+from django.contrib.auth.models import User
 
-from django.shortcuts import render
-
-from django.contrib.auth.decorators import login_required.
+from django.contrib.auth.decorators import login_required
+from .models import Post, Profile
+from .forms import NewPostForm
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
-def article(request, article_id):
+def home(request):
+    images = Post.objects.all()
+    return render(request, 'index.html', {"images": images})
+    
 
+@login_required(login_url="/accounts/login/")
+def new_post(request):
+    current_user = request.user
+    user_profile = Profile.objects.get(user = current_user)
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            # post = form.save(commit=False)
+            # post.user = current_user
+            image = form.cleaned_data.get('image')
+            caption = form.cleaned_data.get('caption')
+            post = Post(image = image,caption = caption,profile = user_profile)
+            post.save_post()
+            # post.save()
+        return redirect('home')
+    else:
+        form = NewPostForm()
+    return render(request, 'new_post.html', {"form": form})
 
 
 def profile(request):
