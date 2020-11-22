@@ -18,13 +18,14 @@ class Profile(models.Model):
         self.save
 
 
-class Image(models.Model):
-    image = models.ImageField(upload_to='posts/')
-    name = models.CharField(max_length=250, blank=True)
-    caption = models.CharField(max_length=250, blank=True)
-    likes = models.ManyToManyField(User, related_name='likes', blank=True, )
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
-    date_posted = models.DateTimeField(auto_now_add=True, null=True)
+
+class Post(models.Model):
+    image = models.ImageField(upload_to='new_post/', blank=True ,default = 'default.jpg')
+    title = models.CharField(max_length=30, default='')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='', null=True ,related_name='author')
+    caption = models.TextField(max_length=300)
+
+
 
     def __str__(self):
-        return  '{}'.format(self.name)
+        return self.title

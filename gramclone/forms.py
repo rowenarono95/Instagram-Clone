@@ -1,3 +1,9 @@
+ 
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from .models import Post,Profile
+
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=50)
@@ -8,11 +14,7 @@ class SignUpForm(UserCreationForm):
         fields = ('username','email','password1','password2')
 
 
-class NewArticleForm(forms.ModelForm):
+class  NewPostForm(forms.ModelForm):
     class Meta:
-        model = Article
-        exclude = ['editor', 'pub_date']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
-
+        model = Post
+        exclude = ['user','profile',]
