@@ -1,34 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Card -->
-{%for post in images%}
-<div class="card">
 
-    <!-- Card image -->
+<div class="container">
+    <div class="row">
+        {%for post in images%}
+        <div class="col-md-8 mb-5">
+            <div class="card" style="width: 40rem;">
+                <img src="{{post.image.url}}" class="img-fluid">
+                <div class="card-body">
+                    <!-- <h4 <i class="far fa-heart"></i></h4> -->
+                    <a href="#" <i class="far fa-heart" style="font-size: 40px; width: 70px;"></i></a>
+                    <a href="#" <i class="far fa-comment" style="font-size: 40px;"></i></a>
+                    <a href="#" class="card-link"></a>
+                    <!-- <h5 <i class="far fa-comment"></i></h5> -->
+                    <a href="#" <i class="fas fa-bookmark" style="font-size: 40px; margin-left: 450px;"></i></a>
+                    
 
-    <div class="view overlay">
-        <img src="{{post.image.url}}" class="img-fluid">
-        <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-        </a>
-    </div>
+                    <h5 class="card-title">Likes by lucy@gen  and 20 others</h5>
+                    <p class="card-text">View all 7 comments</p>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
 
-    <!-- Card content -->
-    <div class="card-body">
+        </div>
+        {%endfor%}
 
-        <!-- Title -->
-        <h4 class="card-title">Card title</h4>
-        <!-- Text -->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <!-- Button -->
-        <a href="#" class="btn btn-primary">Button</a>
-
+        <div class="col-md-4"></div>
     </div>
 
 </div>
-{%endfor%}
-{%endblock%}
 
-<!-- Card -->
+{%endblock%}

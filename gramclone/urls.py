@@ -6,6 +6,7 @@ from django.urls import include, path
 urlpatterns = [
     path('', views.home, name='home'),
     path('new_post/', views.new_post, name='new_post'),
+    path('profile/', views.profile, name='profile'),
  
 ]
 
