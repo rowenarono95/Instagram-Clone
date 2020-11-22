@@ -1,0 +1,35 @@
+ 
+{% load bootstrap4 %}
+{% load cloudinary %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>Instagram -{{ title}}</title>
+    {% else %}
+        <title>Instagram</title>
+    {% endif %}
+
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+    <div class="fluid-container">
+        {% include "instagram/navbar.html"%}
+    </div>
+    <div class ="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html>

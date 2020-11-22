@@ -7,3 +7,12 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username','email','password1','password2')
 
+
+class NewArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        exclude = ['editor', 'pub_date']
+        widgets = {
+            'tags': forms.CheckboxSelectMultiple(),
+        }
+

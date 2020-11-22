@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% block content %}
+<div id="post">
+    <a href="{%url 'new-post'%}"><i class="fas fa-plus-circle"></i>Post</a>
+</div>
+
+
+
+{% for post in posts %}
+    <div class="card post" style="width: 40rem;">
+        <div class="update">
+            <a class="btn btn-sm btn-info" href="{% url 'updatepost' post.id %}" style= "height:25px;">Update</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}" style= "height:25px;">Delete</a>
+        </div>
+        <div>
+            <a href="{% url 'profile' %}"> <img class="rounded-circle "  src="{{ user.profile.image.url }}" 
+                style="border-radius: 50%; width:25px; height:25px;" > {{ post.author}}</a>
+            <hr>
+            <a href="{% url 'single_image' post.id %}"><img class="card-img-top" src= "{{ post.image.url}}" alt="image"></a>
+        </div> 
+        <div class="card-body">
+            <div class='engagement' >
+                <a href="{% url 'likes' post.id%}"><i class="far fa-heart"></i>{{post.likes}}</a>
+                <a href="{% url 'add_comment' post.id %}"><i class="far fa-comment"></i></a>
+                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <div>
+                <a href="{% url 'profile' %}">Posted by: {{ post.author}}</a> <span><p class="card-text">Caption: {{post.caption}}</p></span>
+            </div>
+            <hr>
+
+            <div class="commentsection">
+                <p>Total Comments: {{ post.comments.count }}</p>
+            </div>
+
+            <div class='timepass'>
+                {{post.date_posted |timesince }} ago
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
