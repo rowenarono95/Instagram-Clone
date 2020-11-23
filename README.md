@@ -105,3 +105,8 @@ Open [localhost:8000](http://127.0.0.1:8000/)
 
 ## Support and contact details
  Incase you come across errors, have questions, ideas ,concerns, or want to contribute to the application, feel free to reach me at :rowenarono@gmail.com
+
+
+### License
+
+* [[License: MIT]](Licence.md) <rowenarono@gmail.com>
