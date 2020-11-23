@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
-from .models import Post, Profile
+from .models import Post, Profile, Comments
 from .forms import NewPostForm,UserUpdateForm,ProfileUpdateForm,CommentForm
 from django.shortcuts import get_object_or_404
 
@@ -64,6 +64,7 @@ def profile(request):
 def comments(request,id):
     current_user = request.user
     image = get_object_or_404(Post, id=id)
+    comment = Comments.objects.filter(image = id).all()
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -74,7 +75,7 @@ def comments(request,id):
             return redirect('home')
     else:
         form = CommentForm()
-    return render(request,'comments.html',{"form":form})
+    return render(request,'comments.html',{"form":form, "comment": comment})
 
 
 def search_user(request):

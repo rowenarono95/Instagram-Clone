@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
+import cloudinary
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -37,7 +39,6 @@ class Post(models.Model):
 
 class Comments(models.Model):
     image = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
-    models.ForeignKey(Post,  on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)

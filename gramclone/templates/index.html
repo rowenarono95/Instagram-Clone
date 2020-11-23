@@ -17,7 +17,7 @@
                 </div>
 
             </div>
-            <div class="card" style="width: 40rem;">
+            <div class="card" style="width: 50rem;">
                 <img src="{{post.image.url}}" class="img-fluid">
                 <div class="card-body">
                     <!-- <h4 <i class="far fa-heart"></i></h4> -->
@@ -32,7 +32,11 @@
                     <h5 class="card-title">Liked by <strong>lucy</strong> and 20 others</h5>
 
                     <div class="commentsection">
-                        <p>View all comments: {{ post.comments.count }}</p>
+                        <a href=""></a><p>View all comments: {{ post.comments.count }}</p>
+                        {% for comment in comment %}
+                            <p>{{comment.user}}</p>
+                            <p>{{comment.content}}</p>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- <div class="card-body">
