@@ -10,8 +10,6 @@ urlpatterns = [
     path('comments/<id>', views.comments, name='comments'),
     path('search_user', views.search_user, name='search_user'),
 
-
-
 ]
 
 if settings.DEBUG:

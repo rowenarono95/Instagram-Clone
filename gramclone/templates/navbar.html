@@ -26,33 +26,43 @@ The search form above-->
     </li>
 
     {% endif %}
-  </div> --> 
+  </div> -->
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white mb-2">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" style= "font-size: 30px; margin-left: 200px;" href="{% url 'home' %}">Instagram</a>
-    <!-- <form class="form-inline my-2 my-lg-0" style="margin-left: 500px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white mb-2">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" style="font-size: 30px; margin-left: 200px;" href="{% url 'home' %}">Instagram</a>
+      <!-- <form class="form-inline my-2 my-lg-0" style="margin-left: 500px;">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form> -->
-    <form class="form-inline my-4 my-lg-0" role="search" action="{% url 'search_user'%}">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-          name="search_user">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-  </form>
-    <a href="{% url 'profile' %}"><i class="far fa-user-circle" style="font-size: 30px; margin-left: 210px; color: black;"></i></a>
-  </div>
-</nav>
+      <form class="form-inline my-4 my-lg-0" role="search" action="{% url 'search_user'%}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_user">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <a href="{% url 'profile' %}"><i class="far fa-user-circle"
+          style="font-size: 30px; margin-left: 210px; color: black;"></i></a>
+    </div>
+    <div>
+      <a class="nav-item nav-link logout" href="/login">Login</a>
+    </div>
+    <div>
+      <a class="nav-item nav-link logout" href="/logout">Log Out</a>
+    </div>
+  </nav>
 </body>
+
 </html>
