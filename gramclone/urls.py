@@ -7,7 +7,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('new_post/', views.new_post, name='new_post'),
     path('profile/', views.profile, name='profile'),
- 
+    path('comments/<id>', views.comments, name='comments'),
+
+
 ]
 
 if settings.DEBUG:

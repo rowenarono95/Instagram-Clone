@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Post, Profile
 from .forms import NewPostForm,UserUpdateForm,ProfileUpdateForm,CommentForm
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 @login_required(login_url="/accounts/login/")
@@ -60,9 +61,9 @@ def profile(request):
     return render(request, 'profile.html', context)
 
     
-def comments(request, pk):
+def comments(request,id):
     current_user = request.user
-    image = get_object_or_404(Image, id=pk)
+    image = get_object_or_404(Post, id=id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -70,7 +71,7 @@ def comments(request, pk):
             comment.user = current_user
             comment.image = image
             comment.save()
-            return redirect('main_page')
+            return redirect('home')
     else:
         form = CommentForm()
-    return render(request,'instagram/add_comment.html',{"form":form})
+    return render(request,'comments.html',{"form":form})
