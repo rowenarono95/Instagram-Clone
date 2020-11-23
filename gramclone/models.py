@@ -21,7 +21,6 @@ class Profile(models.Model):
         self.save()
 
 
-
 class Post(models.Model):
     image = models.ImageField(upload_to='new_post/', blank=True ,default = 'default.jpg')
     title = models.CharField(max_length=30, default='')

@@ -42,10 +42,15 @@ The search form above-->
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" style= "font-size: 30px; margin-left: 200px;" href="{% url 'home' %}">Instagram</a>
-    <form class="form-inline my-2 my-lg-0" style="margin-left: 500px;">
+    <!-- <form class="form-inline my-2 my-lg-0" style="margin-left: 500px;">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
+    <form class="form-inline my-4 my-lg-0" role="search" action="{% url 'search_user'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+          name="search_user">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+  </form>
     <a href="{% url 'profile' %}"><i class="far fa-user-circle" style="font-size: 30px; margin-left: 210px; color: black;"></i></a>
   </div>
 </nav>

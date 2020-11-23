@@ -1,4 +1,4 @@
-% extends 'insta/base.html' %}
+{% extends 'base.html' %}
 {%  block content %}
 {% if users %}
     {% for user in users %}
@@ -7,8 +7,9 @@
         <div class="col-sm-4">
             <div class="card" style="width: 25rem;">
                 <span>
-                    <img src="{{user.profile.profile_photo.url}}" alt=""
+                    <img src="{{user.profile.profile_pic.url }}" alt=""
                         style="border-radius: 50%; width:30px; height:30px; border-color: brown; border-width: 1px;">
+                        <h4>{{user.username}}</h4>
                 </span>
                 <hr>
                 <span>{{user.profile.bio}}</span>
