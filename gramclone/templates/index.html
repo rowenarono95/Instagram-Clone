@@ -6,6 +6,17 @@
     <div class="row">
         {%for post in images%}
         <div class="col-md-8 mb-5">
+            <div class="media">
+                <div class="col-md-4">
+                    <div style="width: 50px; overflow:hidden; border-radius:50%" class="img-wrapper">
+                        <img src="{{user.profile.profile_pic.url }}" width="80px" alt="profile">
+                    </div>
+                </div>
+                <div class="media-body" style="margin-left: -150px; margin-top: 20px;">
+                    <h5 class="account-heading">{{user.username}}</h5>
+                </div>
+
+            </div>
             <div class="card" style="width: 40rem;">
                 <img src="{{post.image.url}}" class="img-fluid">
                 <div class="card-body">
@@ -16,17 +27,18 @@
                     <!-- <h5 <i class="far fa-comment"></i></h5> -->
                     <a href="#" <i class="fas fa-bookmark" style="font-size: 40px; margin-left: 450px;"></i></a>
 
-
-                    <h5 class="card-title">Likes by lucy@gen and 20 others</h5>
+                    <br>
+                    <br>
+                    <h5 class="card-title">Liked by <strong>lucy</strong> and 20 others</h5>
 
                     <div class="commentsection">
                         <p>View all comments: {{ post.comments.count }}</p>
                     </div>
                 </div>
-                <div class="card-body">
+                <!-- <div class="card-body">
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
-                </div>
+                </div> -->
             </div>
 
         </div>
