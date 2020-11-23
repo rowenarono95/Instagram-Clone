@@ -34,3 +34,13 @@ class Post(models.Model):
 
     def save_post(self):
         self.save()
+
+
+class Comment(models.Model):
+    image = models.ForeignKey(Post,blank=True, on_delete=models.CASCADE,related_name='comment')
+    comment_title = models.ForeignKey(User, blank=True,on_delete=models.CASCADE)
+    comment= models.TextField()
+
+    def save_comment(self):
+        self.save()
+        
