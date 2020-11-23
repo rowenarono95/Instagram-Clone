@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -36,15 +36,17 @@ class Post(models.Model):
         self.save()
 
 
-class Comment(models.Model):
-    image = models.ForeignKey(Post,blank=True, on_delete=models.CASCADE,related_name='comment')
-    comment_title = models.ForeignKey(User, blank=True,on_delete=models.CASCADE)
-    comment= models.TextField()
+class Comments(models.Model):
+    image = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    models.ForeignKey(Post,  on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now=True)
 
-    def save_comment(self):
+
+    def __str__(self):
+        return '{}'.format(self.content)
+
+    def vaild(self):
+        self.vaild = True
         self.save()
-
-        
-    def delete_comment(self):
-        self.delete()
-
