@@ -24,10 +24,11 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    image = models.ImageField(upload_to='new_post/', blank=True ,default = 'default.jpg')
+    image = CloudinaryField('image')
     title = models.CharField(max_length=30, default='')
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE,)
     caption = models.TextField(max_length=300)
+    
 
 
     def __str__(self):
