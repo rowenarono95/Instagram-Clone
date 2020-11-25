@@ -21,13 +21,10 @@ def new_post(request):
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
-            # post = form.save(commit=False)
-            # post.user = current_user
             image = form.cleaned_data.get('image')
             caption = form.cleaned_data.get('caption')
             post = Post(image = image,caption = caption,profile = user_profile)
             post.save_post()
-            # post.save()
         return redirect('home')
     else:
         form = NewPostForm()
